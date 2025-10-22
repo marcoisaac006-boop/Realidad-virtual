@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Línea de Tiempo AR - InnovArte</title>
+
+    <!-- Librerías principales -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://rawcdn.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #mensaje {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: #00ffff;
+        padding: 8px 15px;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        z-index: 9999;
+        text-align: center;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="mensaje">
+      📸 Apunta tu cámara y verás la línea de tiempo flotando en el aire
+    </div>
+
+    <!-- Escena de realidad aumentada sin marcador -->
+    <a-scene
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+      vr-mode-ui="enabled: false"
+    >
+      <!-- Emoji 1: Fotografía -->
+      <a-entity
+        position="-1 0 -3"
+        text="value: 📷 1839 - Nace la fotografía; color: yellow; align: center;"
+        scale="1.8 1.8 1.8"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 9000"
+      ></a-entity>
+
+      <!-- Emoji 2: Computadora -->
+      <a-entity
+        position="0 0 -3"
+        text="value: 💻 1960 - Arte digital; color: cyan; align: center;"
+        scale="1.8 1.8 1.8"
+        animation="property: rotation; to: 0 -360 0; loop: true; dur: 10000"
+      ></a-entity>
+
+      <!-- Emoji 3: Inteligencia Artificial -->
+      <a-entity
+        position="1 0 -3"
+        text="value: 🤖 2025 - IA creativa; color: pink; align: center;"
+        scale="1.8 1.8 1.8"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 8000"
+      ></a-entity>
+
+      <!-- Cámara -->
+      <a-camera position="0 0 0"></a-camera>
+    </a-scene>
+  </body>
+</html>
