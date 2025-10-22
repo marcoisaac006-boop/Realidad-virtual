@@ -1,75 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Línea de Tiempo AR - InnovArte</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AR Línea de Tiempo — 3 emojis</title>
 
-    <!-- Librerías principales -->
-    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.0/aframe/build/aframe-ar-nft.js"></script>"
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
+  <!-- AR.js (versión estable en jsDelivr) -->
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.0/aframe/build/aframe-ar.js"></script>
 
-      #mensaje {
-        position: absolute;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.5);
-        color: #00ffff;
-        padding: 8px 15px;
-        border-radius: 8px;
-        font-family: 'Poppins', sans-serif;
-        z-index: 9999;
-        text-align: center;
-        font-size: 14px;
-      }
-    </style>
-  </head>
+  <style>
+    html,body{height:100%; margin:0; background:#000;}
+    #mensaje{
+      position: absolute; z-index:9999; left:50%; transform:translateX(-50%);
+      top:12px; background: rgba(0,0,0,0.5); color:#00ffff; padding:8px 12px; border-radius:8px;
+      font-family: system-ui, sans-serif;
+    }
+    .nota {
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+      z-index:9999; color:#ddd; font-size:13px; background: rgba(0,0,0,0.35);
+      padding:6px 10px; border-radius:8px; font-family: system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="mensaje">📸 Permite la cámara y apunta al frente — si usas celular: Chrome (Android) funciona mejor</div>
 
-  <body>
-    <div id="mensaje">
-      📸 Apunta tu cámara y verás la línea de tiempo flotando en el aire
-    </div>
+  <!-- SCENE AR (sin marcador) -->
+  <a-scene
+    embedded
+    arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false;"
+    vr-mode-ui="enabled: false">
 
-    <!-- Escena de realidad aumentada sin marcador -->
-    <a-scene
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false;"
-      vr-mode-ui="enabled: false"
-    >
-      <!-- Emoji 1: Fotografía -->
+    <!-- Cámara -->
+    <a-entity camera></a-entity>
+
+    <!-- Contenedor centrado al frente (a -3 metros) -->
+    <a-entity id="timeline" position="0 0 -3">
+
+      <!-- Emoji 1 -->
       <a-entity
-        position="-1 0 -3"
-        text="value: 📷 1839 - Nace la fotografía; color: yellow; align: center;"
-        scale="1.8 1.8 1.8"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 9000"
-      ></a-entity>
+        position="-1 0 0"
+        text="value: 📷 1839 — Fotografía; align: center; color: #fff; width: 3"
+        scale="1.6 1.6 1.6"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 8000">
+      </a-entity>
 
-      <!-- Emoji 2: Computadora -->
+      <!-- Emoji 2 -->
       <a-entity
-        position="0 0 -3"
-        text="value: 💻 1960 - Arte digital; color: cyan; align: center;"
-        scale="1.8 1.8 1.8"
-        animation="property: rotation; to: 0 -360 0; loop: true; dur: 10000"
-      ></a-entity>
+        position="0 0 0"
+        text="value: 💻 1960 — Arte computacional; align: center; color: #fff; width: 3"
+        scale="1.6 1.6 1.6"
+        animation="property: rotation; to: 0 -360 0; loop: true; dur: 9000">
+      </a-entity>
 
-      <!-- Emoji 3: Inteligencia Artificial -->
+      <!-- Emoji 3 -->
       <a-entity
-        position="1 0 -3"
-        text="value: 🤖 2025 - IA creativa; color: pink; align: center;"
-        scale="1.8 1.8 1.8"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 8000"
-      ></a-entity>
+        position="1 0 0"
+        text="value: 🤖 2025 — IA creativa; align: center; color: #fff; width: 3"
+        scale="1.6 1.6 1.6"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 7000">
+      </a-entity>
 
-      <!-- Cámara -->
-      <a-camera position="0 0 0"></a-camera>
-    </a-scene>
-  </body>
+    </a-entity>
 
+    <!-- Piso invisible para estabilidad visual -->
+    <a-plane position="0 -1 -3" rotation="-90 0 0" width="10" height="10" color="#111" visible="false"></a-plane>
+  </a-scene>
+
+  <div class="nota">Si aparece pantalla roja: prueba en Chrome (Android) o usa Glitch. Si no, pega aquí el error de la consola.</div>
+</body>
 </html>
+
