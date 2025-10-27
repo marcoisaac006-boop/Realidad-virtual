@@ -1,76 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AR Línea de Tiempo — 3 emojis</title>
-
-  <!-- A-Frame -->
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-
-  <!-- AR.js (versión estable en jsDelivr) -->
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.0/aframe/build/aframe-ar.js"></script>
-
-  <style>
-    html,body{height:100%; margin:0; background:#000;}
-    #mensaje{
-      position: absolute; z-index:9999; left:50%; transform:translateX(-50%);
-      top:12px; background: rgba(0,0,0,0.5); color:#00ffff; padding:8px 12px; border-radius:8px;
-      font-family: system-ui, sans-serif;
-    }
-    .nota {
-      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-      z-index:9999; color:#ddd; font-size:13px; background: rgba(0,0,0,0.35);
-      padding:6px 10px; border-radius:8px; font-family: system-ui, sans-serif;
-    }
-  </style>
+  <title>Francis Bacon</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="mensaje">📸 Permite la cámara y apunta al frente — si usas celular: Chrome (Android) funciona mejor</div>
+  <header>
+    <h1>Desarrollado por el grupo 2</h1>
+    <button id="creditsBtn" aria-controls="creditsSection" aria-expanded="false">Créditos</button>
+  </header>
 
-  <!-- SCENE AR (sin marcador) -->
-  <a-scene
-    embedded
-    arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false;"
-    vr-mode-ui="enabled: false">
+  <main id="mainContent">
+    <div class="hero">
+      <img src="https://hips.hearstapps.com/hmg-prod/images/francis-bacon-royalty-free-illustration-1691614750.jpg"
+           alt="Retrato de Francis Bacon"
+           class="hero-image" />
+      <div class="hero-info">
+        <h2>Francis Bacon 📚</h2>
+        <p>Filósofo y estadista inglés (1561–1626), padre del método científico moderno y defensor de la investigación empírica sistemática. 🔬</p>
+      </div>
+    </div>
 
-    <!-- Cámara -->
-    <a-entity camera></a-entity>
+    <div class="accordion" id="accordion">
+      <article class="accordion-item">
+        <button class="accordion-header">Infancia y Juventud <span class="icon">+</span></button>
+        <div class="accordion-content">
+          <p>Francis Bacon nació el 22 de enero de 1561 en Londres, en una familia acomodada; su padre fue Sir Nicholas Bacon. Estudió en Cambridge (Trinity College) desde una edad temprana y luego en Gray's Inn, donde recibió formación jurídica. Desde joven mostró interés por la filosofía natural y el aprendizaje práctico. 👶🎓</p>
+          <button class="close-btn">Cerrar</button>
+        </div>
+      </article>
 
-    <!-- Contenedor centrado al frente (a -3 metros) -->
-    <a-entity id="timeline" position="0 0 -3">
+      <article class="accordion-item">
+        <button class="accordion-header">Educación y Formación <span class="icon">+</span></button>
+        <div class="accordion-content">
+          <p>Bacon recibió educación clásica y jurídica; sus viajes por Europa y su contacto con intelectuales de la época ampliaron su visión. Abogó por reformar el conocimiento mediante la observación y la experimentación, alejándose de la dependencia exclusiva de la autoridad y la deducción escolástica. 🎓</p>
+          <button class="close-btn">Cerrar</button>
+        </div>
+      </article>
 
-      <!-- Emoji 1 -->
-      <a-entity
-        position="-1 0 0"
-        text="value: 📷 1839 — Fotografía; align: center; color: #fff; width: 3"
-        scale="1.6 1.6 1.6"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 8000">
-      </a-entity>
+      <article class="accordion-item">
+        <button class="accordion-header">Carrera y Servicio Público <span class="icon">+</span></button>
+        <div class="accordion-content">
+          <p>Bacon desarrolló una prominente carrera política: fue miembro del Parlamento, abogado y finalmente Lord Canciller de Inglaterra. Paralelamente, escribió sobre la reorganización del saber humano y propuso un método inductivo para la ciencia. 💼</p>
+          <button class="close-btn">Cerrar</button>
+        </div>
+      </article>
 
-      <!-- Emoji 2 -->
-      <a-entity
-        position="0 0 0"
-        text="value: 💻 1960 — Arte computacional; align: center; color: #fff; width: 3"
-        scale="1.6 1.6 1.6"
-        animation="property: rotation; to: 0 -360 0; loop: true; dur: 9000">
-      </a-entity>
+      <article class="accordion-item">
+        <button class="accordion-header">Obras Principales <span class="icon">+</span></button>
+        <div class="accordion-content">
+          <ul>
+            <li>Novum Organum (1620) — sobre el método científico</li>
+            <li>Of Advancement of Learning (1605)</li>
+            <li>Essays (varias ediciones) — ensayos sobre política y conducta</li>
+            <li>The New Atlantis (obra utópica incompleta)</li>
+          </ul>
+          <button class="close-btn">Cerrar</button>
+        </div>
+      </article>
 
-      <!-- Emoji 3 -->
-      <a-entity
-        position="1 0 0"
-        text="value: 🤖 2025 — IA creativa; align: center; color: #fff; width: 3"
-        scale="1.6 1.6 1.6"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 7000">
-      </a-entity>
+      <article class="accordion-item">
+        <button class="accordion-header">Contribuciones Filosóficas <span class="icon">+</span></button>
+        <div class="accordion-content">
+          <p>Bacon promovió un método inductivo basado en la recolección sistemática de datos y la experimentación controlada; criticó los "ídolos" (prejuicios) que distorsionan el entendimiento humano. Sus ideas sentaron bases para la ciencia experimental moderna y la investigación empírica. 🔍</p>
+          <button class="close-btn">Cerrar</button>
+        </div>
+      </article>
 
-    </a-entity>
+      <article class="accordion-item">
+        <button class="accordion-header">Vida Personal y Muerte <span class="icon">+</span></button>
+        <div class="accordion-content">
+          <p>Bacon murió el 9 de abril de 1626. Además de su labor política y filosófica, es recordado por su defensa de la ciencia práctica y su influencia en el desarrollo del método científico. 👤</p>
+          <button class="close-btn">Cerrar</button>
+        </div>
+      </article>
+    </div>
+  </main>
 
-    <!-- Piso invisible para estabilidad visual -->
-    <a-plane position="0 -1 -3" rotation="-90 0 0" width="10" height="10" color="#111" visible="false"></a-plane>
-  </a-scene>
+  <section id="creditsSection" class="hidden" aria-hidden="true">
+    <div class="credits-content">
+      <img src="" alt="" id="creditsImage" style="display:none" />
+      <div id="creditsList" class="credits-list">
+        <!-- La lista de créditos se renderiza dinámicamente -->
+      </div>
+    </div>
+    <button id="backBtn">Volver</button>
+  </section>
 
-  <div class="nota">Si aparece pantalla roja: prueba en Chrome (Android) o usa Glitch. Si no, pega aquí el error de la consola.</div>
+  <button id="backToTop" aria-label="Volver arriba">↑ Volver arriba</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
 
